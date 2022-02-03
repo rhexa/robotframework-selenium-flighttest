@@ -30,14 +30,10 @@ Check that you have at least one flight choice visible
     There are available Flights
 
 Select one of the flights -> store the price, number and airline of that flight in separate variables
-    ${flight}=    Select first available flight
-    ${result}=    Get Text    ${flight}
-    @{list}=    Split String   ${result}
-    ${id}=    Set Variable    ${list}[0]
-    @{airline_list}=    Get Slice From List    ${list}    1    -5
-    ${airline}=    Evaluate    " ".join(${airline_list})
-    ${price}=    Set Variable    ${list}[-1]
-    Log Many    ${id}    ${airline}    ${price}
+    ${id}    ${airline}    ${price}=    Select first available flight
+    Set Global Variable    ${id}
+    Set Global Variable    ${airline}
+    Set Global Variable    ${price}
 
 On the page that opens, check that the price, airline, and flight number of the trip you stored in the variables can be found on the page (note that here you need to slightly change the information you export to the variable (String library (?))
 Store the total price of the flight in a new variable

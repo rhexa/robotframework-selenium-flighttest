@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+Library    String
 Library    Collections
 
 *** Variables ***
@@ -26,7 +27,14 @@ Select Destination City
 
 Select first available flight
     ${flight}=  Get WebElement    css:table[class='table']>tbody tr
-    [Return]    ${flight}
+    ${result}=    Get Text    ${flight}
+    @{list}=    Split String   ${result}
+    ${id}=    Get From List    ${list}    0
+    @{airline_list}=    Get Slice From List    ${list}    1    -5
+    ${airline}=    Evaluate    " ".join(${airline_list})
+    ${price}=    Get Variable Value    ${list}[-1]
+    @{result}=    Create List    ${id}    ${airline}    ${price}
+    [Return]    ${result}
 
 Search For Flights
     Click Button    css:input[type='submit']
@@ -34,3 +42,7 @@ Search For Flights
 There are available Flights
     @{flights}=  Get WebElements    css:table[class='table']>tbody tr
     Should Not Be Empty     ${flights}
+
+Test
+    @{res}=    Create List    0    1    2
+    [Return]    ${res}
