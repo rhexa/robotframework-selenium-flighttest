@@ -33,6 +33,8 @@ Select first available flight
     @{airline_list}=    Get Slice From List    ${list}    1    -5
     ${airline}=    Evaluate    " ".join(${airline_list})
     ${price}=    Get Variable Value    ${list}[-1]
+    
+    Click Button    xpath://table/tbody/tr[1]/td[1]/input[@type="submit"]
     @{result}=    Create List    ${id}    ${airline}    ${price}
     [Return]    ${result}
 
