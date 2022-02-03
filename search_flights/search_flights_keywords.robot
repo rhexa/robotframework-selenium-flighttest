@@ -45,6 +45,12 @@ There are available Flights
     @{flights}=  Get WebElements    css:table[class='table']>tbody tr
     Should Not Be Empty     ${flights}
 
+Verify flight data is correct
+    [Arguments]    @{args}
+    FOR    ${item}    IN    @{args}
+        Page Should Contain    ${item}  
+    END
+
 Test
     @{res}=    Create List    0    1    2
     [Return]    ${res}

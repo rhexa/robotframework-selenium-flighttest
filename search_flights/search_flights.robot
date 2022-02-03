@@ -36,6 +36,9 @@ Select one of the flights -> store the price, number and airline of that flight 
     Set Global Variable    ${price}
 
 On the page that opens, check that the price, airline, and flight number of the trip you stored in the variables can be found on the page (note that here you need to slightly change the information you export to the variable (String library (?))
+    @{list}=    Create List    ${id}    ${airline}    ${price}
+    Run Keyword And Expect Error    *    Verify flight data is correct    ${list}
+
 Store the total price of the flight in a new variable
 Fill in the passenger information on the form (set the month and year of the card as global variables)
 Choose Diner's Club as your credit card
