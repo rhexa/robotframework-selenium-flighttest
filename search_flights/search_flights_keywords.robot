@@ -14,6 +14,9 @@ Open Home Page
 Close Browsers
     Close All Browsers
 
+Click purchase flight
+    Click Button    css:input[type="submit"][value="Purchase Flight"]
+
 Click remember me
     Click Element    css:input#rememberMe
 

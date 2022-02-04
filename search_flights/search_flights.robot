@@ -63,6 +63,8 @@ Click "Remember me"
     Click remember me
 
 Click "Purchase Flight"
+    Click purchase flight
+
 Check that the page that opens says "Thank you for your purchase today!"
 Check that the exposure time is correct
 Check that the total price is correct (should be equal with the variable you stored in previous step)
