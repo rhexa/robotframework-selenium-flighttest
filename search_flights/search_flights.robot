@@ -57,6 +57,8 @@ Fill in the passenger information on the form (set the month and year of the car
     Fill in passenger information    ${passenger_info}
 
 Choose Diner's Club as your credit card
+    Select card type    Diner's Club
+
 Click "Remember me"
 Click "Purchase Flight"
 Check that the page that opens says "Thank you for your purchase today!"

@@ -31,6 +31,10 @@ Get Total Price
     ${result}=    Get Text    xpath://div[@class="container"]/p[contains(text(),"Total Cost: ")]/em
     [Return]    ${result}
 
+Select card type
+    [Arguments]    ${card_type}
+    Select From List By Label    css:select#cardType    ${card_type}
+
 Select Departure City
     [Arguments]      ${departure_city}
      Select From List By Value   xpath://select[@name='fromPort']  ${departure_city}
