@@ -1,6 +1,5 @@
 *** Settings ***
 Resource        search_flights_keywords.robot
-Library    ../venv/lib/site-packages/robot/libraries/String.py
 Library    Collections
 
 *** Variables ***
@@ -72,3 +71,4 @@ Check that the exposure time is correct
     Verify exposure time is correct    
 
 Check that the total price is correct (should be equal with the variable you stored in previous step)
+    Run Keyword And Expect Error    *    Verify total price is correct    ${price}

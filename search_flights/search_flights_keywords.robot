@@ -70,12 +70,6 @@ There are available Flights
     @{flights}=  Get WebElements    css:table[class='table']>tbody tr
     Should Not Be Empty     ${flights}
 
-Verify flight data is correct
-    [Arguments]    @{args}
-    FOR    ${item}    IN    @{args}
-        Page Should Contain    ${item}  
-    END
-
 Verify exposure time is correct
     ${date}=    Get Text    xpath://tr[td="Date"]/td[2]
     ${date}=    Convert Date    ${date}    date_format=%a, %d %b %Y %H:%M:%S %z
@@ -84,6 +78,19 @@ Verify exposure time is correct
     ${time_delta}=    Convert Time    1 day
     ${isLessThanOneDay}=    Evaluate    ${time_length}<${time_delta}
     Should Be True    ${isLessThanOneDay}
+
+Verify flight data is correct
+    [Arguments]    @{args}
+    FOR    ${item}    IN    @{args}
+        Page Should Contain    ${item}  
+    END
+
+Verify total price is correct
+    [Arguments]    ${price}
+    ${temp}=    Get Text    xpath://tr[td="Amount"]/td[2]
+    @{temp}=    Split String    ${temp}
+    ${temp}=    Set Variable    ${temp}[0]
+    Should Be Equal As Strings    ${price}    ${temp}
 
 Test
     @{res}=    Create List    0    1    2
