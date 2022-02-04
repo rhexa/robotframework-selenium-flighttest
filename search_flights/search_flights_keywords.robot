@@ -2,6 +2,7 @@
 Library    SeleniumLibrary
 Library    String
 Library    Collections
+Library    DateTime
 
 *** Variables ***
 ${URL}          http://blazedemo.com/
@@ -74,6 +75,15 @@ Verify flight data is correct
     FOR    ${item}    IN    @{args}
         Page Should Contain    ${item}  
     END
+
+Verify exposure time is correct
+    ${date}=    Get Text    xpath://tr[td="Date"]/td[2]
+    ${date}=    Convert Date    ${date}    date_format=%a, %d %b %Y %H:%M:%S %z
+    ${today}=    Get Current Date
+    ${time_length}=    Subtract Date From Date    ${today}    ${date}
+    ${time_delta}=    Convert Time    1 day
+    ${isLessThanOneDay}=    Evaluate    ${time_length}<${time_delta}
+    Should Be True    ${isLessThanOneDay}
 
 Test
     @{res}=    Create List    0    1    2
