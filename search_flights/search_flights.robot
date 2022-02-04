@@ -60,6 +60,8 @@ Choose Diner's Club as your credit card
     Select card type    Diner's Club
 
 Click "Remember me"
+    Click remember me
+
 Click "Purchase Flight"
 Check that the page that opens says "Thank you for your purchase today!"
 Check that the exposure time is correct

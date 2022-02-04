@@ -14,6 +14,9 @@ Open Home Page
 Close Browsers
     Close All Browsers
 
+Click remember me
+    Click Element    css:input#rememberMe
+
 Fill in passenger information
     [Arguments]    ${passenger_info}
     Input Text    css:input#inputName    ${passenger_info}[name]
