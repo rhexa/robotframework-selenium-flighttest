@@ -43,6 +43,19 @@ Store the total price of the flight in a new variable
     ${total_price}=    Get Total Price
 
 Fill in the passenger information on the form (set the month and year of the card as global variables)
+    ${card_month}=    Set Variable    01
+    ${card_year}=     Set Variable    2001
+    Set Global Variable    ${card_month}    ${card_year}
+    
+    ${passenger_info}=    Create Dictionary
+    Set To Dictionary    ${passenger_info}    name    abal abel
+    Set To Dictionary    ${passenger_info}    address    123 main st
+    Set To Dictionary    ${passenger_info}    city    cyber city
+    Set To Dictionary    ${passenger_info}    state    cyber state
+    Set To Dictionary    ${passenger_info}    zip    12345
+    Set To Dictionary    ${passenger_info}    card_number    1234567898765
+    Fill in passenger information    ${passenger_info}
+
 Choose Diner's Club as your credit card
 Click "Remember me"
 Click "Purchase Flight"

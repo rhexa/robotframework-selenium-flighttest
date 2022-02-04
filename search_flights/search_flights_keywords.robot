@@ -14,6 +14,16 @@ Open Home Page
 Close Browsers
     Close All Browsers
 
+Fill in passenger information
+    [Arguments]    ${passenger_info}
+    Input Text    css:input#inputName    ${passenger_info}[name]
+    Input Text    css:input#address    ${passenger_info}[address]
+    Input Text    css:input#city    ${passenger_info}[city]
+    Input Text    css:input#state    ${passenger_info}[state]
+    Input Text    css:input#zipCode    ${passenger_info}[zip]
+    Input Text    css:input#creditCardNumber    ${passenger_info}[card_number]
+    Input Text    css:input#nameOnCard    ${passenger_info}[name]
+
 Find Flights button is selectable
     Page Should Contain Button    xpath://input[@value="Find Flights"]
 
