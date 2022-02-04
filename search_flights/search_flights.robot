@@ -40,6 +40,8 @@ On the page that opens, check that the price, airline, and flight number of the 
     Run Keyword And Expect Error    *    Verify flight data is correct    ${list}
 
 Store the total price of the flight in a new variable
+    ${total_price}=    Get Total Price
+
 Fill in the passenger information on the form (set the month and year of the card as global variables)
 Choose Diner's Club as your credit card
 Click "Remember me"

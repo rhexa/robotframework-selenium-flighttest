@@ -17,6 +17,10 @@ Close Browsers
 Find Flights button is selectable
     Page Should Contain Button    xpath://input[@value="Find Flights"]
 
+Get Total Price
+    ${result}=    Get Text    xpath://div[@class="container"]/p[contains(text(),"Total Cost: ")]/em
+    [Return]    ${result}
+
 Select Departure City
     [Arguments]      ${departure_city}
      Select From List By Value   xpath://select[@name='fromPort']  ${departure_city}
