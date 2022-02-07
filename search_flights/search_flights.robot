@@ -44,7 +44,8 @@ Store the total price of the flight in a new variable
 Fill in the passenger information on the form (set the month and year of the card as global variables)
     ${card_month}=    Set Variable    01
     ${card_year}=     Set Variable    2001
-    Set Global Variable    ${card_month}    ${card_year}
+    Set Global Variable    ${card_month}
+    Set Global Variable    ${card_year}
     
     ${passenger_info}=    Create Dictionary
     Set To Dictionary    ${passenger_info}    name    abal abel
@@ -67,8 +68,8 @@ Click "Purchase Flight"
 Check that the page that opens says "Thank you for your purchase today!"
     Page Should Contain    Thank you for your purchase today!
 
-Check that the exposure time is correct
-    Verify exposure time is correct    
+Check that the card expiration time is correct
+    Run Keyword And Expect Error    *    Verify card expiration time is correct    ${card_month}    ${card_year}  
 
 Check that the total price is correct (should be equal with the variable you stored in previous step)
     Run Keyword And Expect Error    *    Verify total price is correct    ${price}

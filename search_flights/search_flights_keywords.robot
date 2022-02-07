@@ -70,14 +70,13 @@ There are available Flights
     @{flights}=  Get WebElements    css:table[class='table']>tbody tr
     Should Not Be Empty     ${flights}
 
-Verify exposure time is correct
-    ${date}=    Get Text    xpath://tr[td="Date"]/td[2]
-    ${date}=    Convert Date    ${date}    date_format=%a, %d %b %Y %H:%M:%S %z
-    ${today}=    Get Current Date
-    ${time_length}=    Subtract Date From Date    ${today}    ${date}
-    ${time_delta}=    Convert Time    1 day
-    ${isLessThanOneDay}=    Evaluate    ${time_length}<${time_delta}
-    Should Be True    ${isLessThanOneDay}
+Verify card expiration time is correct
+    [Arguments]    ${month}    ${year}
+    ${date}=    Get Text    xpath://tr[td="Expiration"]/td[2]
+    ${date}=    Replace String    ${date}    /    ${empty}
+    ${date}=    Split String    ${date}
+    Should Be Equal    ${month}    ${date}[0]
+    Should Be Equal    ${year}    ${date}[1]
 
 Verify flight data is correct
     [Arguments]    @{args}
