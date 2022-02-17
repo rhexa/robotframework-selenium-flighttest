@@ -3,14 +3,24 @@ Library    SeleniumLibrary
 Library    String
 Library    Collections
 Library    DateTime
+Library    OperatingSystem
 
 *** Variables ***
 ${URL}          http://blazedemo.com/
 ${BROWSER}      Chrome
+${BROWSER_HEADLESS}   headlesschrome
+${ENVIRONMENT}    Production
 
 *** Keywords ***
 Open Home Page
+    Run Keyword And Return If    '${ENVIRONMENT}' == 'Development'    Open Development
+    Open Production
+    
+Open Development
     Open browser    ${URL}   ${BROWSER}
+
+Open Production
+    Open browser    ${URL}   ${BROWSER_HEADLESS}   options=add_argument("--remote-debugging-port=9515");add_argument("--no-sandbox"); add_argument("--disable-dev-shm-usage")
 
 Close Browsers
     Close All Browsers
